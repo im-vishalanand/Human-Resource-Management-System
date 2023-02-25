@@ -37,8 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public Employee loginEmployee(String username, String password) throws EmployeeException{
 		
-		Connection conn= null;
-		
+		Connection conn= null;	
 		Employee employee=null;
 		
 		try{
@@ -57,9 +56,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				String empName= rs.getString("empname");
 				String empUsername =rs.getString("empusername");
 				String emppassword=rs.getString("emppassword");
-				int edid = rs.getInt("Edid");
+				int empdid = rs.getInt("empdid");
 				
-				employee= new EmployeeImpl(eid, empName, empUsername, emppassword, edid);
+				employee= new EmployeeImpl(eid, empName, empUsername, emppassword, empdid);
 			}
 			else 
 				throw new EmployeeException("Invalid Username or Password.");
@@ -136,7 +135,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				e.setEmpId(rs.getInt("empid"));
 	        	e.setEmpName(rs.getString("empname"));
 	        	e.setEmpUsername(rs.getString("empusername"));
-				e.setEmpPassword(rs.getString("emplpassword"));
+				e.setEmpPassword(rs.getString("emppassword"));
 				e.setEmpDid(rs.getInt("empdid"));
 				
 				emp.add(e);
@@ -160,12 +159,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public Employee getEmployeeById(int empid) throws EmployeeException, SQLException {
 		Connection conn=null;
-		
 		Employee employee=null;
 		try {
 			conn=DBUtils.createConnection();
 			
-			String getQuery="select * from employee where empid=?";
+			String getQuery="select * from employee where empdid=?";
 			
 			PreparedStatement ps= conn.prepareStatement(getQuery);
 			
@@ -241,7 +239,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		try {
 			conn= DBUtils.createConnection();
 			
-			String updateQuery="update employee set emppassword=? where eid=?";
+			String updateQuery="update employee set emppassword=? where empdid=?";
 			
 			PreparedStatement ps = conn.prepareStatement(updateQuery);
 			

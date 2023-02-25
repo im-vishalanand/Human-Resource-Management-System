@@ -7,7 +7,7 @@ public class DepartmentImpl implements Department{
 	
 	public DepartmentImpl(){}
 
-	public DepartmentImpl(String deptName, int deptNo) {
+	public DepartmentImpl(String deptName, int deptNo, int deptdid) {
 		this.deptName = deptName;
 		this.deptNo = deptNo;
 	}

@@ -13,5 +13,5 @@ public interface DepartmentDao {
 	public List<Department> allDepartment()throws DepartmentException,SQLException;
 	public String updateDepartment(Department department) throws DepartmentException;
 	public String acceptLeaves(int empId) throws LeaveException;
-	public String rejectLeaves(int empId);
+	public String rejectLeaves(int empId) throws LeaveException;
 }

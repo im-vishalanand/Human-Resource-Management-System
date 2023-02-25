@@ -24,7 +24,7 @@ public class DBUtils {
 		password=rb.getString("password");
 	}
 	
-	static Connection createConnection() throws SQLException {
+	public static Connection createConnection() throws SQLException {
 		return DriverManager.getConnection(url,username,password);
 	}
 	
@@ -33,4 +33,5 @@ public class DBUtils {
 			con.close();			
 		}
 	}
+	
 }
