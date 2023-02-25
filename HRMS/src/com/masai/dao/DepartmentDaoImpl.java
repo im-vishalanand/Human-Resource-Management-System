@@ -47,7 +47,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 			PreparedStatement ps = conn.prepareStatement(addQuery);
 			
 			ps.setString(1, department.getDeptName());
-			ps.setString(2, department.getDeptName());
+			ps.setInt(2, department.getDeptNo());
 			
 			int result=ps.executeUpdate();
 			
@@ -90,8 +90,9 @@ public class DepartmentDaoImpl implements DepartmentDao{
 			while(rs.next()) {
 				String deptName= rs.getString("deptName");
 				int deptNo = rs.getInt("deptNo");
+				int did=rs.getInt("did");
 				
-				Department department= new DepartmentImpl(deptName, deptNo) ;
+				Department department= new DepartmentImpl(deptName, deptNo, did) ;
 				
 				dept.add(department);
 			}
@@ -117,14 +118,14 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		try {
 			conn= DBUtils.createConnection();
 			
-			String updateQuery="update department set deptname=? , emppassword=? where deptno=?";
+			String updateQuery="update department set deptname=? where deptno=?";
 			
 			PreparedStatement ps = conn.prepareStatement(updateQuery);
 			
 			ps.setString(1, department.getDeptName());
 			ps.setInt(2, department.getDeptNo());			
 			
-			int result=ps.executeUpdate();
+				int result=ps.executeUpdate();
 			
 			if(result>0) {
 				message="Department updated successfully";
@@ -180,9 +181,35 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public String rejectLeaves(int empId) {
-		// TODO Auto-generated method stub
-		return null;
+	public String rejectLeaves(int empId) throws LeaveException {
+		Connection conn=null;
+		String message="";
+		
+		try{
+			conn= DBUtils.createConnection();
+			PreparedStatement ps=conn.prepareStatement("update leaves set status='Reject' where empId=?");
+			ps.setInt(1, empId);
+			
+			int result=ps.executeUpdate();
+			
+			if(result>0) {
+				message="Employee leaves Rejected ";
+			}
+			else {
+				throw new LeaveException("Employee Not found");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				DBUtils.closeConnection(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return message;
 	}
 
 }
