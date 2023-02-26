@@ -36,18 +36,17 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public String registerDepartment(Department department) throws DepartmentException {
+	public String registerDepartment(String name) throws DepartmentException {
 		Connection conn=null;
 		String message="";
 		try {
 			conn= DBUtils.createConnection();
 			
-			String addQuery="insert into department (deptname, deptno) values(?,?)";
+			String addQuery="insert into department (deptname) values(?)";
 			
 			PreparedStatement ps = conn.prepareStatement(addQuery);
 			
-			ps.setString(1, department.getDeptName());
-			ps.setInt(2, department.getDeptNo());
+			ps.setString(1, name);
 			
 			int result=ps.executeUpdate();
 			
@@ -90,9 +89,8 @@ public class DepartmentDaoImpl implements DepartmentDao{
 			while(rs.next()) {
 				String deptName= rs.getString("deptName");
 				int deptNo = rs.getInt("deptNo");
-				int did=rs.getInt("did");
 				
-				Department department= new DepartmentImpl(deptName, deptNo, did) ;
+				Department department= new DepartmentImpl(deptName, deptNo) ;
 				
 				dept.add(department);
 			}
@@ -129,74 +127,6 @@ public class DepartmentDaoImpl implements DepartmentDao{
 			
 			if(result>0) {
 				message="Department updated successfully";
-			}
-			else {
-				throw new DepartmentException("Cannot update Department, Try Again!");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				DBUtils.closeConnection(conn);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return message;
-	}
-
-	@Override
-	public String acceptLeaves(int empId) throws LeaveException {
-		
-		Connection conn=null;
-		String message="";
-		
-		try{
-			conn= DBUtils.createConnection();
-			PreparedStatement ps=conn.prepareStatement("update leaves set status='Approve' where empId=?");
-			ps.setInt(1, empId);
-			
-			int result=ps.executeUpdate();
-			
-			if(result>0) {
-				message="Employee leaves Accepted ";
-			}
-			else {
-				throw new LeaveException("Employee Not found");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				DBUtils.closeConnection(conn);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return message;
-	}
-
-	@Override
-	public String rejectLeaves(int empId) throws LeaveException {
-		Connection conn=null;
-		String message="";
-		
-		try{
-			conn= DBUtils.createConnection();
-			PreparedStatement ps=conn.prepareStatement("update leaves set status='Reject' where empId=?");
-			ps.setInt(1, empId);
-			
-			int result=ps.executeUpdate();
-			
-			if(result>0) {
-				message="Employee leaves Rejected ";
-			}
-			else {
-				throw new LeaveException("Employee Not found");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

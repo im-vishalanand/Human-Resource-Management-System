@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.masai.dto.Employee;
 import com.masai.dto.EmployeeImpl;
+import com.masai.exception.DepartmentException;
 import com.masai.exception.EmployeeException;
 
 public class EmployeeDaoImpl implements EmployeeDao{
@@ -34,6 +35,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return emp;
 	}
 
+	
 	@Override
 	public Employee loginEmployee(String username, String password) throws EmployeeException{
 		
@@ -60,9 +62,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				
 				employee= new EmployeeImpl(eid, empName, empUsername, emppassword, empdid);
 			}
-			else 
-				throw new EmployeeException("Invalid Username or Password.");
-		
+			else {
+				throw new EmployeeException("Cannot login");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -98,9 +100,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				message = "New Employee Added !";				
 			}
 			else {
-				throw new EmployeeException("Cannot add, Something went wrong");
+				throw new EmployeeException("Unable to add Employee");
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -151,9 +152,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				e.printStackTrace();
 			}
 		}	
-		
 		return emp;
-		
 	}
 
 	@Override
@@ -195,6 +194,33 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		return employee;	
 	}
+	
+	@Override
+	public String changeDepartment(int empID, int empDid) throws EmployeeException{
+		
+		Connection conn=null;
+		String msg="";
+		try{
+			conn=DBUtils.createConnection();
+			
+			String query="update employee set empDid=? where empId=?";
+			PreparedStatement ps=conn.prepareStatement(query);
+			
+			ps.setInt(1,empDid);
+			ps.setInt(2,empID);
+			
+			int res=ps.executeUpdate();
+			if(res>0) {
+				msg="Department changes successfully";
+			}
+			else {
+				throw new EmployeeException("Unable to change Department");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
 
 	@Override
 	public String updateEmployee(String username, String password, int empid) throws EmployeeException {
@@ -233,13 +259,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public String changePassword(int empid, String password) {
+	public String changePassword(int empid, String password) throws EmployeeException {
 		Connection conn=null;
 		String message="";
 		try {
 			conn= DBUtils.createConnection();
 			
-			String updateQuery="update employee set emppassword=? where empdid=?";
+			String updateQuery="update employee set emppassword=? where empid=?";
 			
 			PreparedStatement ps = conn.prepareStatement(updateQuery);
 			
@@ -250,8 +276,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			if(ps.executeUpdate()>0) {
 				message="Password changed successfully";
 			}
+			else {
+				throw new EmployeeException("Cannot change Password, Try Again!");
+			}
 		} catch (SQLException e) {
-			message="Cannot change Password, Try Again!";
 			e.printStackTrace();
 		}
 		finally {

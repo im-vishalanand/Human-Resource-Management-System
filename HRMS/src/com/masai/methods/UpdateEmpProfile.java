@@ -1,4 +1,4 @@
-package com.masai.useCase;
+package com.masai.methods;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ import com.masai.exception.EmployeeException;
 
 public class UpdateEmpProfile {
 	
-	public static void main(int eid) throws EmployeeException {
+	public static void main(int eid){
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter New Username  : ");
@@ -19,7 +19,12 @@ public class UpdateEmpProfile {
 		EmployeeDao emp=new EmployeeDaoImpl();
 		
 		
-		String result = emp.updateEmployee(empUsername,empPassword, eid);
+		String result="";
+		try {
+			result = emp.updateEmployee(empUsername,empPassword, eid);
+		} catch (EmployeeException e) {
+			e.printStackTrace();
+		}
 		System.out.println(result);
 		
 		sc.close();

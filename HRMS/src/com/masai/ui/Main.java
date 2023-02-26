@@ -3,17 +3,19 @@ package com.masai.ui;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.masai.dto.EmployeeImpl;
+import com.masai.dto.Employee;
+import com.masai.exception.DepartmentException;
 import com.masai.exception.EmployeeException;
-import com.masai.useCase.LoginEmployee;
+import com.masai.methods.LoginEmployee;
 
 public class Main {
 	
 	static boolean	flag=true;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, DepartmentException, EmployeeException {
 		Scanner sc= new Scanner(System.in);
 		try {
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.print("     WELCOME ");
 			Thread.sleep(300);
 			
@@ -33,7 +35,7 @@ public class Main {
 			Thread.sleep(300);
 			
 			System.out.println();
-			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.println();
 			Thread.sleep(300);
 			System.out.println("Please Choose Option: ");
@@ -42,10 +44,8 @@ public class Main {
 			System.out.println();
 			System.out.println("Press 1 --->  for Login As Admin");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 2 ---> for login As Employee");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 3 ---> for Exit");
 			
 		} catch (InterruptedException e) {
@@ -53,61 +53,51 @@ public class Main {
 		}
 		
 		System.out.println();
-		System.out.print("Option: ");
+		System.out.print("Select an Option: ");
 		int choice =sc.nextInt();
 		
-		switch(choice) {
-		case 1:{
-			System.out.println();
-			System.out.println("Enter Admin Username : ");
+//		switch(choice) {
+		if(choice==1) {
+			System.out.print("Enter Admin Username : ");
 			String username=sc.next();
 			
-			System.out.println("Enter Admin Password : ");
+			System.out.print("Enter Admin Password : ");
 			String password = sc.next();
+			System.out.println();
 			
 			if(username.equals("admin") && password.equals("admin")) {
-				try {
-					AdminLink.linkingAdmin();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				AdminLink.linkingAdmin();;
 			}
 			else  {
 				System.out.println("Wrong Username or Password");
 			}
-			break;
+//			break;
 		}
-		case 2:{
-			try {
-				EmployeeImpl emp=LoginEmployee.loginEmployee();
-				EmployeeLink.linkingEmployeeMethod(emp);
-			} catch (EmployeeException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			break;
-			
+		else if(choice==2) {
+			Employee emp=LoginEmployee.loginEmployee();
+			EmployeeLink.linkingEmployeeMethod(emp);
+//			break;
 		}
-		case 3:{
+		else if(choice==3) {
 			System.out.println();
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.println("   Application  Closed");
 			System.out.println("       Thank  You");
-			System.out.println("-------------------------");
-			break;
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+//			break;
 		}
 		
-		default:
+		else {
 			try {
-				System.out.println("Invalid  key");
-				Thread.sleep(200);
-				System.out.println("Please choose a valid key");
-				Thread.sleep(400);
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+				System.out.println("        Wrong input");
+				Thread.sleep(100);
+				System.out.println("   Please choose a valid key");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		
 		sc.close();
 	}
 }

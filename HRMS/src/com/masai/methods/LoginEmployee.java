@@ -1,4 +1,4 @@
-package com.masai.useCase;
+package com.masai.methods;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,28 +7,26 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.masai.dao.DBUtils;
+import com.masai.dto.Employee;
 import com.masai.dto.EmployeeImpl;
 import com.masai.exception.EmployeeException;
 
 public class LoginEmployee {
 	
-//	public static void main(String[] args) {
-//		
-//	}
 	
-	public static EmployeeImpl  loginEmployee() throws EmployeeException, SQLException {
-		EmployeeImpl emp=null;
+	public static Employee loginEmployee(){
    		
+		Employee emp=null;
    		Scanner sc=new Scanner(System.in);
    		
-   		System.out.println("Enter Your User Name");
+   		System.out.print("Enter Your Username: ");
    		String email=sc.next();
    		
-   		System.out.println("Enter Your Password");
+   		System.out.print("Enter Your Password: ");
    		String password=sc.next();
+   		System.out.println();
    		
    		Connection conn=null;
-   		
    		
    		try {
    			conn=DBUtils.createConnection();
@@ -52,20 +50,16 @@ public class LoginEmployee {
    				if(!emp.getEmpPassword().equals(password)) {
    					
    					throw new EmployeeException("Wrong Password");
-   					
    				}
-   				
    			}
    			else {
    				throw new EmployeeException("Email ID not exist");
    			}
    			
-   		} catch (SQLException e) {
+   		} catch (SQLException | EmployeeException e) {
    			e.printStackTrace();
    		}
-   		
    		sc.close();
    		return emp;		
-   		
 	}
 }

@@ -1,4 +1,4 @@
-package com.masai.useCase;
+package com.masai.methods;
 
 import java.util.List;
 import com.masai.dao.EmployeeDao;

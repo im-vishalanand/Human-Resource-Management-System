@@ -1,4 +1,4 @@
-package com.masai.useCase;
+package com.masai.methods;
 
 import java.util.Scanner;
 import com.masai.dao.EmployeeDao;
@@ -7,7 +7,7 @@ import com.masai.dto.Employee;
 import com.masai.dto.EmployeeImpl;
 import com.masai.exception.EmployeeException;
 
-public class AddEmployeeUserCase {
+public class AddEmployee {
 	
 		public static void main(String[] args){
 			Scanner sc = new Scanner(System.in);

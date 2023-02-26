@@ -2,12 +2,12 @@ package com.masai.dto;
 
 public class DepartmentImpl implements Department{
 
-	private String deptName;
 	private int deptNo;
+	private String deptName;
 	
 	public DepartmentImpl(){}
 
-	public DepartmentImpl(String deptName, int deptNo, int deptdid) {
+	public DepartmentImpl(String deptName, int deptNo) {
 		this.deptName = deptName;
 		this.deptNo = deptNo;
 	}
