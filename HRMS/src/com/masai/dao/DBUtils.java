@@ -28,7 +28,7 @@ public class DBUtils {
 		return DriverManager.getConnection(url,username,password);
 	}
 	
-	static void closeConnection(Connection con) throws SQLException {
+	public static void closeConnection(Connection con) throws SQLException {
 		if(con!=null) {
 			con.close();			
 		}

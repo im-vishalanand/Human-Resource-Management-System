@@ -9,9 +9,7 @@ import com.masai.exception.LeaveException;
 
 public interface DepartmentDao {
 
-	public String registerDepartment(Department department) throws DepartmentException;
+	public String registerDepartment(String name) throws DepartmentException;
 	public List<Department> allDepartment()throws DepartmentException,SQLException;
 	public String updateDepartment(Department department) throws DepartmentException;
-	public String acceptLeaves(int empId) throws LeaveException;
-	public String rejectLeaves(int empId) throws LeaveException;
 }
