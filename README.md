@@ -31,7 +31,15 @@
     <ol>
         <li>JAVA</li>
         <li>MySQL</li>
-        <li>Git & GitHub</li>
+        <li>JDBC</li>
+    </ol>
+    <br>
+    <h3>Tools used</h3>
+    <hr>
+    <ol>
+        <li>STS</li>
+        <li>Git</li>
+        <li>GitHub</li>
     </ol>
     <br>
     <h3>ER Diagram</h3>
