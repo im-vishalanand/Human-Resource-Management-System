@@ -1,4 +1,6 @@
 <h1 align="center" >Human Resource Management System</h1>
+<div align="center"><img src="https://user-images.githubusercontent.com/108060013/221414653-f9a06405-1a1e-4b5e-a1f6-e361f4589574.png"></div>
+
 <br>
     <h3>Introduction</h3>
     <hr>
