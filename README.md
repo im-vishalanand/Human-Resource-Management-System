@@ -37,8 +37,7 @@
     <h3>ER Diagram</h3>
     <hr>
     
-![Untitled (2)](https://user-images.githubusercontent.com/108060013/221412664-4a35a31d-491d-4b64-9025-b4965453e36f.png)  
-
+![Untitled (3)](https://user-images.githubusercontent.com/108060013/221413353-8c99163a-d048-4e67-85c9-63182b9f5ca3.png)
   <!--<br>
   <h3>Feedback</h3>
     <hr>
