@@ -1,1 +1,48 @@
-# secretive-form-5947
+<h1 align="center" >Human Resource Management System</h1>
+<br>
+    <h3>Introduction</h3>
+    <hr>
+    <p>Human Resource Management System (HRMS) is a software which is used to control and manage the records of the Employees and Departments</p>
+    <p>Primary goal of HRMS is that Admin can register Employees in the given Departments,  manages different Departments and Employee can modify their profiles and can apply for leaves</p>
+    <br>
+    <h3>Key Features</h3>
+    <hr>
+    <h4>Admin<h4>
+    <ol>
+        <li>Add Department</li>
+        <li>View All Department</li>
+        <li>View All Employee</li>
+        <li>Update the Department</li>
+        <li>Add New Employee</li>
+        <li>Transfer Employee To Other Department</li>
+        <li>Accept leaves Of Employess</li>
+        <li>Reject Leaves Of Employees</li>
+    </ol>
+    <h4>Employee<h4>
+    <ol>
+        <li>View Profile</li>
+        <li>Update Profile</li>
+        <li>Change Password</li>
+        <li>Apply for Leave</li>
+    </ol>
+    <br>
+    <h3>Technology used</h3>
+    <hr>
+    <ol>
+        <li>JAVA</li>
+        <li>MySQL</li>
+        <li>Git & GitHub</li>
+    </ol>
+    <br>
+    <h3>ER Diagram</h3>
+    <hr>
+    
+![Untitled (2)](https://user-images.githubusercontent.com/108060013/221412664-4a35a31d-491d-4b64-9025-b4965453e36f.png)  
+
+  <!--<br>
+  <h3>Feedback</h3>
+    <hr>
+    <p>Valuable feedback will be appreciated. You can reach out to me via below medium</p>
+    <ul>
+       <li><a href="https://www.linkedin.com/in/Im-vishalanand/">LinkedIn</a></li>
+    </ul>-->
