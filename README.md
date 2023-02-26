@@ -19,6 +19,7 @@
         <li>Transfer Employee To Other Department</li>
         <li>Accept leaves Of Employess</li>
         <li>Reject Leaves Of Employees</li>
+        <li>Delete Department</li>
     </ol>
     <h4>Employee<h4>
     <ol>
