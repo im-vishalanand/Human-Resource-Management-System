@@ -26,9 +26,5 @@ public class ShowPendingLeaves {
 		} catch (LeaveException e) {
 			e.printStackTrace();
 		}
-		
-		
-
 	}
-
 }

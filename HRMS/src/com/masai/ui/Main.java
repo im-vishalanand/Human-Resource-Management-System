@@ -10,9 +10,16 @@ import com.masai.methods.LoginEmployee;
 
 public class Main {
 	
+	static int empId;
+	static String empName;
+	static String empUsername;
+	static String empPassword;
+	static int empDid;
+	
+	
 	static boolean	flag=true;
 	
-	public static void main(String[] args) throws SQLException, DepartmentException, EmployeeException {
+	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
 		try {
 			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -42,11 +49,11 @@ public class Main {
 			Thread.sleep(300);
 			
 			System.out.println();
-			System.out.println("Press 1 --->  for Login As Admin");
+			System.out.println("Press 1 ---> Login As Admin");
 			Thread.sleep(300);
-			System.out.println("Press 2 ---> for login As Employee");
+			System.out.println("Press 2 ---> Login As Employee");
 			Thread.sleep(300);
-			System.out.println("Press 3 ---> for Exit");
+			System.out.println("Press 3 ---> Exit");
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -55,8 +62,8 @@ public class Main {
 		System.out.println();
 		System.out.print("Select an Option: ");
 		int choice =sc.nextInt();
+		System.out.println();
 		
-//		switch(choice) {
 		if(choice==1) {
 			System.out.print("Enter Admin Username : ");
 			String username=sc.next();
@@ -66,38 +73,40 @@ public class Main {
 			System.out.println();
 			
 			if(username.equals("admin") && password.equals("admin")) {
-				AdminLink.linkingAdmin();;
+				try {
+					AdminLink.linkingAdmin();
+				} catch (SQLException | DepartmentException | EmployeeException e) {
+					
+					System.out.println("Something went wrong");
+				}
 			}
 			else  {
-				System.out.println("Wrong Username or Password");
+				System.out.println("Wrong Admin Credentials. Please Try Again");
+				System.out.println();
+				main(null);
 			}
-//			break;
 		}
 		else if(choice==2) {
 			Employee emp=LoginEmployee.loginEmployee();
-			EmployeeLink.linkingEmployeeMethod(emp);
-//			break;
+			empId=emp.getEmpId();
+			empName=emp.getEmpName();
+			empUsername=emp.getEmpUsername();
+			empPassword=emp.getEmpPassword();
+			empDid=emp.getEmpDid();
+			EmployeeLink.linkingEmployeeMethod();
 		}
 		else if(choice==3) {
-			System.out.println();
 			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.println("   Application  Closed");
 			System.out.println("       Thank  You");
 			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-//			break;
 		}
 		
 		else {
-			try {
-				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-				System.out.println("        Wrong input");
-				Thread.sleep(100);
-				System.out.println("   Please choose a valid key");
-				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.println("Wrong input. Please Choose a Correct Option");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			main(null);
 		}
-		sc.close();
 	}
 }

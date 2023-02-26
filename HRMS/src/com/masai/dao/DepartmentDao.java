@@ -12,4 +12,5 @@ public interface DepartmentDao {
 	public String registerDepartment(String name) throws DepartmentException;
 	public List<Department> allDepartment()throws DepartmentException,SQLException;
 	public String updateDepartment(Department department) throws DepartmentException;
+	public String deleteDepartment(String name) throws DepartmentException;
 }

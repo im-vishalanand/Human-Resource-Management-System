@@ -7,10 +7,12 @@ import com.masai.dao.DepartmentDao;
 import com.masai.dao.DepartmentDaoImpl;
 import com.masai.dto.Department;
 import com.masai.exception.DepartmentException;
+import com.masai.exception.EmployeeException;
+import com.masai.ui.AdminLink;
 
 public class ViewAllDepartment {
 		
-		public static void main(String[] args) throws SQLException {
+		public static void main(String[] args) throws SQLException, DepartmentException, EmployeeException {
 						
 			DepartmentDao dept = new DepartmentDaoImpl();
 			try {
@@ -23,8 +25,10 @@ public class ViewAllDepartment {
 											
 					System.out.println("=====================================");
 					});
+				AdminLink.linkingAdmin();
 			} catch (DepartmentException e) {
-				e.printStackTrace();
+				System.out.println("No Department Found!");
+				AdminLink.linkingAdmin();
 			}
 		}	
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.masai.dao.EmployeeDao;
 import com.masai.dao.EmployeeDaoImpl;
 import com.masai.exception.EmployeeException;
+import com.masai.ui.EmployeeLink;
 
 public class ChangePassword {
 	
@@ -22,9 +23,10 @@ public class ChangePassword {
 		try {
 			res = emp.changePassword(empid, pass);
 			System.out.println(res);
+			EmployeeLink.linkingEmployeeMethod();
 		} catch (EmployeeException e) {
-			e.printStackTrace();
+			System.out.println("Cannot Change Password");
+			EmployeeLink.linkingEmployeeMethod();
 		}
-		sc.close();
 	}
 }

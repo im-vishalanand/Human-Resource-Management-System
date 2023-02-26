@@ -162,9 +162,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		try {
 			conn=DBUtils.createConnection();
 			
-			String getQuery="select * from employee where empdid=?";
+			String getQuery="select * from employee where empId=?";
 			
 			PreparedStatement ps= conn.prepareStatement(getQuery);
+			
+			ps.setInt(1, empid);
 			
 			ResultSet rs=ps.executeQuery();
 			
@@ -211,7 +213,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			
 			int res=ps.executeUpdate();
 			if(res>0) {
-				msg="Department changes successfully";
+				msg="Department changed successfully";
 			}
 			else {
 				throw new EmployeeException("Unable to change Department");
@@ -237,8 +239,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			ps.setString(2, password);
 			ps.setInt(3, empid);
 			
-			
-			if(ps.executeUpdate()>0) {
+			int res=ps.executeUpdate();
+			if(res>0) {
 				message="Employee updated successfully";
 			}
 			else {

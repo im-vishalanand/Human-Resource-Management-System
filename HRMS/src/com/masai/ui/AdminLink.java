@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 import com.masai.exception.DepartmentException;
 import com.masai.exception.EmployeeException;
-import com.masai.exception.LeaveException;
 import com.masai.methods.AcceptLeave;
 import com.masai.methods.AddDepartment;
 import com.masai.methods.AddEmployee;
 import com.masai.methods.ChangeEmployeeDepartment;
+import com.masai.methods.DeleteDepartment;
 import com.masai.methods.RejectLeave;
 import com.masai.methods.UpdateDepartment;
 import com.masai.methods.ViewAllDepartment;
@@ -23,124 +23,106 @@ public class AdminLink {
 	public  static void linkingAdmin() throws SQLException, DepartmentException, EmployeeException {
 		Scanner sc=new Scanner(System.in);
 
-		System.out.println("==========================================");
+		System.out.println("=========================================");
 		System.out.println("    Welcome  To   My   Admin   Panel    ");
 		System.out.println("=========================================");
 		System.out.println();
+		
 		try {
 			System.out.println("Please Choose an Option :");
 			System.out.println();
 			Thread.sleep(300);
 			System.out.println("Press 1 ---> Add New Department");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 2 ---> View All Department ");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 3 ---> View All Employee ");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 4 ---> Update The Department ");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 5 ---> Add New Employee ");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 6 ---> Transfer Employee To Other Department");
 			Thread.sleep(300);
-			System.out.println();
-			System.out.println("Press 7 ---> Accept leaves Of Employess");
+			System.out.println("Press 7 ---> Accept Leaves Of Employees");
 			Thread.sleep(300);
-			System.out.println();
 			System.out.println("Press 8 ---> Reject Leaves Of Employees");
 			Thread.sleep(300);
-			System.out.println();
+			System.out.println("Press 9 ---> Delete a Department");
+			Thread.sleep(300);
+			System.out.println("Press 10 ---> Home ");
+			Thread.sleep(300);
+			System.out.println("Press 11 ---> Exit ");
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			System.out.println("Wrong Selection");
+			linkingAdmin();
 		}
+		System.out.println();
+		System.out.print("Option: ");
+		int choice = sc.nextInt();
 		
-//		do {
-			try {
-				System.out.println("Press 9 ---> For Home ");
-				Thread.sleep(300);
-				System.out.println();
-				System.out.println("Press 10 ---> For Exit ");
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		//-------------------------Options  To Choose-------------------------------------------
 			
-			System.out.println();
-			System.out.print("Option: ");
-			int choice = sc.nextInt();
-		
-		//Options  To Choose
-			
-		switch (choice) {
-				case 1: {
+			if(choice==1) {
 						System.out.println();
 						AddDepartment.register();
-						break;
 				}
-				case 2: {
-						System.out.println();
-						ViewAllDepartment.main(null);
-						break;
+			else if(choice==2) {
+				System.out.println();
+				ViewAllDepartment.main(null);
 				}
-				case 3: {
-					System.out.println();
-					ViewAllEmployee.main(null);
-					break;
+			else if(choice==3) {
+				System.out.println();
+				ViewAllEmployee.main(null);
 				}
-				case 4: {
-						System.out.println();
-						UpdateDepartment.main(null);
-						break;
+			else if(choice==4) {
+				System.out.println();
+				UpdateDepartment.main(null);
 				}
-				case 5: {
-					System.out.println();
-					AddEmployee.main(null);
-					break;
+			else if(choice==5) {
+				System.out.println();
+				AddEmployee.main(null);
 				}
-				case 6: {        
-					System.out.println();
-					ChangeEmployeeDepartment.main(null);
-					break;
+			else if(choice==6) {        
+				System.out.println();
+				ChangeEmployeeDepartment.main(null);
 				}
-				case 7: {
-					System.out.println();
-					AcceptLeave.main(null);
-					break;
+			else if(choice==7) {
+				System.out.println();
+				AcceptLeave.main(null);
 				}
-				case 8: {
-					System.out.println();
-					RejectLeave.main(null);
-					break;
+			else if(choice==8) {
+				System.out.println();
+				System.out.print("Enter Employee Id: ");
+				int ch=sc.nextInt();
+				System.out.println();
+				RejectLeave.main(ch);;
 				}
+			else if(choice==9) {
+				System.out.println();
+				DeleteDepartment.delete();
+			}
 				
-				case 9: {
-					System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-					System.out.println("   Application  Closed");
-					System.out.println("        Home  Page");
-					System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-					Main.main(null);
-					flag=false;
-					break;
+			else if(choice==10) {
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				System.out.println("   Application  Closed");
+				System.out.println("        Home  Page");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				Main.main(null);
+				flag=false;
 				}
-				case 10: {
-					System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-					System.out.println("   Application  Closed");
-					System.out.println("   Exit  to  Admin  Panel");
-					System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-					AdminLink.linkingAdmin();
-					flag=false;
-					break;
+			else if(choice==11) {
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				System.out.println("   Application  Closed");
+				System.out.println("   Exit  to  Admin  Panel");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				AdminLink.linkingAdmin();
+				flag=false;
 				}
-				default:
-						throw new IllegalArgumentException("Unrelated value: " + choice);
+			else {
+				System.out.println("Wrong selection");
+				System.out.println();
 		}
-		
-//		}while(flag);
-		sc.close();
 	}
 }

@@ -45,7 +45,7 @@ public class LoginEmployee {
    				emp.setEmpName(rs.getString("empname"));
    				emp.setEmpUsername(rs.getString("empusername"));
    				emp.setEmpPassword(rs.getString("emppassword"));
-   				emp.setEmpId(rs.getInt("empdid"));
+   				emp.setEmpDid(rs.getInt("empDid"));
    				
    				if(!emp.getEmpPassword().equals(password)) {
    					
@@ -57,9 +57,9 @@ public class LoginEmployee {
    			}
    			
    		} catch (SQLException | EmployeeException e) {
-   			e.printStackTrace();
+   			System.out.println("Wrong Username or Password");
+   			loginEmployee();
    		}
-   		sc.close();
    		return emp;		
 	}
 }

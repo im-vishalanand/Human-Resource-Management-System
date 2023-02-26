@@ -70,6 +70,41 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		
 		return message;
 	}
+	@Override
+	public String deleteDepartment(String name) throws DepartmentException {
+		Connection conn=null;
+		String message="";
+		try {
+			conn= DBUtils.createConnection();
+			
+			String addQuery="delete from department where deptName=?";
+			
+			PreparedStatement ps = conn.prepareStatement(addQuery);
+			
+			ps.setString(1, name);
+			
+			int result=ps.executeUpdate();
+			
+			if(result>0) {
+				message = "Department Deleted Successfully!";				
+			}
+			else {
+				throw new DepartmentException("Cannot Delete Department, Something went wrong");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				DBUtils.closeConnection(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return message;
+	}
 
 	@Override
 	public List<Department> allDepartment() throws DepartmentException, SQLException {

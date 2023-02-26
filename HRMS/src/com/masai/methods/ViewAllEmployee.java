@@ -1,14 +1,17 @@
 package com.masai.methods;
 
+import java.sql.SQLException;
 import java.util.List;
 import com.masai.dao.EmployeeDao;
 import com.masai.dao.EmployeeDaoImpl;
 import com.masai.dto.Employee;
+import com.masai.exception.DepartmentException;
 import com.masai.exception.EmployeeException;
+import com.masai.ui.AdminLink;
 
 public class ViewAllEmployee {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, DepartmentException, EmployeeException {
 		
 		EmployeeDao empl=new EmployeeDaoImpl();
 		List<Employee> emp;
@@ -24,9 +27,10 @@ public class ViewAllEmployee {
 					
 					System.out.println("=====================================");
 			 });
+			 AdminLink.linkingAdmin();
 		} catch (EmployeeException e) {
-				e.printStackTrace();
-			
+				System.out.println("No Employee found");
+				AdminLink.linkingAdmin();
 		}
 	}
 	
