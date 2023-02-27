@@ -15,11 +15,10 @@ public class EmployeeLink {
 	public  static void linkingEmployeeMethod() {
 		
 		Scanner sc = new Scanner(System.in);
-		int choice=0;
 			
-		System.out.println("============================================");
-		System.out.println("    Welcome  To   My   Employee   Panel   ");
-		System.out.println("============================================");
+		System.out.println("==========================================================");
+		System.out.println("    Welcome  To   My   Employee   Panel   " +Main.empName);
+		System.out.println("==========================================================");
 		try {
 			System.out.println();
 			System.out.println("Please Choose an Option: ");
@@ -42,13 +41,22 @@ public class EmployeeLink {
 		}
 		System.out.println();
 		System.out.print("Option: ");
-		choice=sc.nextInt();
+		int choice=0;
+		try {
+			choice =sc.nextInt();			
+		}
+		catch(Exception e) {
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.println("Wrong input. Please Choose a Correct Option");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			linkingEmployeeMethod();
+		}
+		System.out.println();
 
 		//------------------------Options To Choose----------------------------
 
 		if(choice==1) {
-				System.out.println();
-				GetEmpByID.main();
+				GetEmpByID.main(Main.empId);
 			}
 		else if(choice==2) {
 			    System.out.println();
@@ -73,6 +81,7 @@ public class EmployeeLink {
 				Main.main(null);
 			}
 		else if(choice==6) {
+				System.out.println();
 				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 				System.out.println("   Application  Closed");
 				System.out.println("  Thank You For Visiting");

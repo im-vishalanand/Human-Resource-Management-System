@@ -20,8 +20,7 @@ public class LeavesDaoImpl implements LeavesDao{
 		try {
 			conn=DBUtils.createConnection();
 			
-			String query="insert into leaves (empId) values(?)";
-			
+			String query="insert into leaves (status, empId) values('pending', ?)";
 			
 			PreparedStatement ps=conn.prepareStatement(query);
 			

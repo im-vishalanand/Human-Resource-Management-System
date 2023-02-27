@@ -23,11 +23,12 @@ public class UpdateEmpProfile {
 		String result="";
 		try {
 			result = empl.updateEmployee(empUsername,empPassword, empId);
+			System.out.println(result);
+			EmployeeLink.linkingEmployeeMethod();
 		} catch (EmployeeException e) {
-			e.printStackTrace();
+			System.out.println("Updation unsuccessfull");
+			EmployeeLink.linkingEmployeeMethod();
 		}
-		System.out.println(result);
-		EmployeeLink.linkingEmployeeMethod();
 		
 	}
 }

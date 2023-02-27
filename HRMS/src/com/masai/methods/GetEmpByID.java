@@ -11,10 +11,10 @@ import com.masai.ui.EmployeeLink;
 
 public class GetEmpByID {
 	
-	public static void main() {
+	public static void main(int empid) {
 		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter Employee Id: ");
-		int empid=sc.nextInt();
+//		System.out.println("Enter Employee Id: ");
+//		int empid=sc.nextInt();
 		EmployeeDao empl= new EmployeeDaoImpl();
 		
 		try {

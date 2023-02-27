@@ -20,8 +20,10 @@ public class Main {
 	static boolean	flag=true;
 	
 	public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
+		Scanner sc= new Scanner(System.in);			
+		
 		try {
+			System.out.println();
 			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.print("     WELCOME ");
 			Thread.sleep(300);
@@ -56,12 +58,22 @@ public class Main {
 			System.out.println("Press 3 ---> Exit");
 			
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			System.out.println("Enter Correct Option.");
+			main(null);
 		}
 		
 		System.out.println();
 		System.out.print("Select an Option: ");
-		int choice =sc.nextInt();
+		int choice=0;
+		try {
+			choice =sc.nextInt();			
+		}
+		catch(Exception e) {
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.println("Wrong input. Please Choose a Correct Option");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			main(null);
+		}
 		System.out.println();
 		
 		if(choice==1) {

@@ -16,10 +16,15 @@ public class ChangeEmployeeDepartment {
 		System.out.println("Enter Employee ID: ");
 		int empid=sc.nextInt();
 		System.out.println("Enter New Department ID: ");
-		int newDptid=sc.nextInt();
+		int newDptid=0;
+		try {
+			newDptid=sc.nextInt();			
+		}catch(Exception e) {
+			System.out.println("No Department available for given Department Id. Please Try Again!");
+			main(null);
+		}
 		
 		EmployeeDao dao=new EmployeeDaoImpl();
-		
 		
 		try {
 			String res = dao.changeDepartment(empid, newDptid);
@@ -30,7 +35,13 @@ public class ChangeEmployeeDepartment {
 			try {
 				AdminLink.linkingAdmin();
 			} catch (SQLException | DepartmentException | EmployeeException e1) {
-				e1.printStackTrace();
+				System.out.println("Cannot change Employee Department");
+				try {
+					AdminLink.linkingAdmin();
+				} catch (SQLException | DepartmentException | EmployeeException e2) {
+					System.out.println("Cannot change Employee Department");
+					
+				}
 			}			
 		}
 	}

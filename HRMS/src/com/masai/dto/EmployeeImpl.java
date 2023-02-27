@@ -70,8 +70,8 @@ public class EmployeeImpl implements Employee{
 
 	@Override
 	public String toString() {
-		return "EmployeeImpl [empId=" + empId + ", empName=" + empName + ", empUsername=" + empUsername
-				+ ", empPassword=" + empPassword + ", empDid=" + empDid + "]";
+		return " EmpId=" + empId +"\n"+ " EmpName=" + empName +"\n"+ " EmpUsername=" + empUsername
+				+"\n"+ " EmpPassword=" + empPassword +"\n"+ " EmpDid=" + empDid + "\n";
 	}
 	
 }

@@ -23,7 +23,7 @@ public class RejectLeave {
 			AdminLink.linkingAdmin();
 			
 		} catch (LeaveException | SQLException | DepartmentException | EmployeeException e) {
-			e.printStackTrace();
+			System.out.println("Rejection cannot be done");
 			try {
 				AdminLink.linkingAdmin();
 			} catch (SQLException | DepartmentException | EmployeeException e1) {

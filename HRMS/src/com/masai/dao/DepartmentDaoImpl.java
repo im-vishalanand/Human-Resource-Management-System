@@ -36,7 +36,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public String registerDepartment(String name) throws DepartmentException {
+	public String registerDepartment(String name) {
 		Connection conn=null;
 		String message="";
 		try {
@@ -54,7 +54,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 				message = "New Department Added !";				
 			}
 			else {
-				throw new DepartmentException("Cannot add, Something went wrong");
+				System.out.println("Cannot add, Something went wrong");
 			}
 			
 		} catch (SQLException e) {
@@ -71,7 +71,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		return message;
 	}
 	@Override
-	public String deleteDepartment(String name) throws DepartmentException {
+	public String deleteDepartment(String name) {
 		Connection conn=null;
 		String message="";
 		try {
@@ -89,7 +89,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
 				message = "Department Deleted Successfully!";				
 			}
 			else {
-				throw new DepartmentException("Cannot Delete Department, Something went wrong");
+				System.out.println("Cannot Delete Department, Something went wrong");
 			}
 			
 		} catch (SQLException e) {

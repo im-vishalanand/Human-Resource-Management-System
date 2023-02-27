@@ -25,6 +25,11 @@ public class AcceptLeave {
 			AdminLink.linkingAdmin();
 		} catch (LeaveException | SQLException | DepartmentException | EmployeeException e) {
 			e.printStackTrace();
+			try {
+				AdminLink.linkingAdmin();
+			} catch (SQLException | DepartmentException | EmployeeException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 

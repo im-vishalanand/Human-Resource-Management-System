@@ -37,10 +37,11 @@ public class AddEmployee {
 			String result="";
 			try {
 				result = empl.registerEmployee(emp);
-			} catch (EmployeeException e) {
+				System.out.println(result);	
+				AdminLink.linkingAdmin();
+			} catch (EmployeeException | SQLException | DepartmentException e) {
 				e.printStackTrace();
 			}
-			System.out.println(result);	
 			try {
 				AdminLink.linkingAdmin();
 			} catch (SQLException | DepartmentException | EmployeeException e) {

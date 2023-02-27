@@ -22,7 +22,8 @@ public class AdminLink {
 	
 	public  static void linkingAdmin() throws SQLException, DepartmentException, EmployeeException {
 		Scanner sc=new Scanner(System.in);
-
+		
+		System.out.println();
 		System.out.println("=========================================");
 		System.out.println("    Welcome  To   My   Admin   Panel    ");
 		System.out.println("=========================================");
@@ -60,7 +61,17 @@ public class AdminLink {
 		}
 		System.out.println();
 		System.out.print("Option: ");
-		int choice = sc.nextInt();
+		int choice=0;
+		try {
+			choice =sc.nextInt();			
+		}
+		catch(Exception e) {
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.println("Wrong input. Please Choose a Correct Option");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			linkingAdmin();
+		}
+		System.out.println();
 		
 		//-------------------------Options  To Choose-------------------------------------------
 			
@@ -112,6 +123,7 @@ public class AdminLink {
 				Main.main(null);
 				}
 			else if(choice==11) {
+				System.out.println();
 				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 				System.out.println("   Application  Closed");
 				System.out.println("  Thank You For Visiting");

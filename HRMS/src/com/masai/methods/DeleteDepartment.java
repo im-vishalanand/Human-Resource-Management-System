@@ -23,12 +23,13 @@ public class DeleteDepartment {
 		try {
 			res=dao.deleteDepartment(deptname);
 			System.out.println(res);
+			AdminLink.linkingAdmin();
 			try {
 				AdminLink.linkingAdmin();
 			} catch (SQLException | EmployeeException e) {
 				e.printStackTrace();
 			}
-		} catch (DepartmentException e) {
+		} catch (DepartmentException | SQLException | EmployeeException e) {
 			e.printStackTrace();
 		}
 	}

@@ -11,7 +11,7 @@ public class ApplyLeave {
 
 	public static void main(int empId){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Employee Id  : ");
+//		System.out.println("Enter Employee Id  : ");
 //		int empId= sc.nextInt();
 		
 		LeavesDao l = new LeavesDaoImpl();
@@ -21,7 +21,7 @@ public class ApplyLeave {
 			System.out.println(result);
 			EmployeeLink.linkingEmployeeMethod();
 		} catch (LeaveException e) {
-			e.printStackTrace();
+			System.out.println("Cannot apply for leave");
 			EmployeeLink.linkingEmployeeMethod();			
 		}
 	}

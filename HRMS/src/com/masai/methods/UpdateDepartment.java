@@ -33,19 +33,18 @@ public class UpdateDepartment {
 				String result="";
 				try {
 					result = dept.updateDepartment(department);
-				} catch (DepartmentException e) {
-					e.printStackTrace();
-				}
-				
-				System.out.println(result);
-				System.out.println();
-				try {
+					System.out.println(result);
+					System.out.println();
 					AdminLink.linkingAdmin();
-				} catch (SQLException | DepartmentException | EmployeeException e) {
-					e.printStackTrace();
+				} catch (DepartmentException | SQLException | EmployeeException e) {
+					System.out.println("Cannot update Department. Try Again");
+					try {
+						AdminLink.linkingAdmin();
+					} catch (SQLException | DepartmentException | EmployeeException e1) {
+						e1.printStackTrace();
+					}
 				}
 				
-				sc.close();
 			}
 	
 }
