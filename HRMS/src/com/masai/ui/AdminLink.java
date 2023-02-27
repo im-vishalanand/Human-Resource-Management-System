@@ -105,24 +105,22 @@ public class AdminLink {
 			}
 				
 			else if(choice==10) {
+				System.out.println();
 				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-				System.out.println("   Application  Closed");
-				System.out.println("        Home  Page");
+				System.out.println("   Back to Home  Page");
 				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
 				Main.main(null);
-				flag=false;
 				}
 			else if(choice==11) {
-				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 				System.out.println("   Application  Closed");
-				System.out.println("   Exit  to  Admin  Panel");
-				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
-				AdminLink.linkingAdmin();
-				flag=false;
+				System.out.println("  Thank You For Visiting");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 				}
 			else {
 				System.out.println("Wrong selection");
 				System.out.println();
+				linkingAdmin();
 		}
 	}
 }

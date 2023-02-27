@@ -20,9 +20,12 @@ public class LeavesDaoImpl implements LeavesDao{
 		try {
 			conn=DBUtils.createConnection();
 			
-			String query="insert into leaves (status,empId) values('pending',?)";
+			String query="insert into leaves (empId) values(?)";
+			
 			
 			PreparedStatement ps=conn.prepareStatement(query);
+			
+			ps.setInt(1, id);
 			
 			int res=ps.executeUpdate();
 			
@@ -32,7 +35,6 @@ public class LeavesDaoImpl implements LeavesDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return message;
 	}
 

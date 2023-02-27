@@ -2,6 +2,7 @@ package com.masai.ui;
 
 import java.util.Scanner;
 
+import com.masai.methods.ApplyLeave;
 import com.masai.methods.ChangePassword;
 import com.masai.methods.GetEmpByID;
 import com.masai.methods.UpdateEmpProfile;
@@ -43,7 +44,7 @@ public class EmployeeLink {
 		System.out.print("Option: ");
 		choice=sc.nextInt();
 
-		//------------------Options  To Choose----------------------------
+		//------------------------Options To Choose----------------------------
 
 		if(choice==1) {
 				System.out.println();
@@ -62,23 +63,20 @@ public class EmployeeLink {
 		else if(choice==4) {                         //change
 				System.out.println();
 				int e=Main.empId;
-				ChangePassword.main(e);				
+				ApplyLeave.main(e);			
 			}
 		else if(choice==5) {
 				System.out.println();
-				System.out.println("   Application  Closed");
-				System.out.println("     Home  Page");
-				System.out.println("-------------------------");
-				System.out.println("Something went wrong");
-				linkingEmployeeMethod();
-				flag=false;
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				System.out.println("   Back to Home  Page");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+				Main.main(null);
 			}
 		else if(choice==6) {
-				System.out.println();
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 				System.out.println("   Application  Closed");
-				System.out.println("     Exit  to  Employee  Panel");
-				EmployeeLink.linkingEmployeeMethod();
-				flag=false;
+				System.out.println("  Thank You For Visiting");
+				System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			}
 		else {
 			System.out.println("Wrong Selection");
