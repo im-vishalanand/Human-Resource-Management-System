@@ -56,3 +56,18 @@
     <ul>
        <li><a href="https://www.linkedin.com/in/Im-vishalanand/">LinkedIn</a></li>
     </ul>-->
+        
+## 🔗 Contact Me
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://Im-vishalanand.github.io/)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/im-vishalanand/)
+
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Im_vishalanand)
+
+## Authors
+
+- [Kumar Vishal Anand](https://github.com/Im-vishalanand)
+
+## Acknowledgements
+
+- [Masai School](https://www.masaischool.com/)
