@@ -36,9 +36,7 @@
 
 - JAVA
 - MySQL
-- MySQL
-
-<br>
+- JDBC
 
 ## Tools used
 
@@ -47,7 +45,6 @@
 - Github
 
 <br>
-
     
 ## Setting & Installation 
 
