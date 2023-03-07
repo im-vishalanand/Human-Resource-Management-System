@@ -48,6 +48,39 @@
 
 <br>
 
+    
+## Setting & Installation 
+
+Install the Spring Tools Suite 
+```bash
+https://spring.io/tools
+```
+
+Install MySQL Community Server
+
+```bash
+https://dev.mysql.com/downloads/mysql/
+```
+
+Clone the Repository
+
+```bash
+git clone https://github.com/Im-vishalanand/secretive-form-5947.git
+```
+
+Open MySQL Server
+```bash
+Create a New Database in MySQL: "project" 
+```
+
+## Run Locally
+
+Go to the Project Directory
+
+```bas
+Open the E-Commerce Folder with STS
+```   
+
 ## ER Diagram
     
 ![Untitled (5)](https://user-images.githubusercontent.com/108060013/223524728-8f71f475-d530-4acd-829c-79a902cba656.png)
