@@ -75,7 +75,7 @@ Create a New Database in MySQL: "project"
 Go to the Project Directory
 
 ```bas
-Open the E-Commerce Folder with STS
+Open the HRMS Folder with STS
 ```   
 
 ## ER Diagram
